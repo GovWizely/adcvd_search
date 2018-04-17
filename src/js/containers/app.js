@@ -67,6 +67,26 @@ function mapDispatchToProps(dispatch) {
       dispatch(updateWindow({ innerWidth, innerHeight }));
     },
     onSubmit: (query) => {
+      if(query.countries){
+        query.type = 'countries';
+        query.q = query.countries;
+        delete query.countries;
+      }
+      if(query.product_short_names){
+        query.type = 'products';
+        query.q = query.product_short_names;
+        delete query.product_short_names;
+      }
+      if(query.case_numbers){
+        query.type = 'case_numbers';
+        query.q = query.case_numbers;
+        delete query.case_numbers;
+      }
+      if(query.hts_numbers){
+        query.type = 'hts_numbers';
+        query.q = query.hts_numbers;
+        delete query.hts_numbers;
+      }
       dispatch(replaceQuery(query));
       dispatch(invalidateAllResults());
       dispatch(invalidateAllFilters());

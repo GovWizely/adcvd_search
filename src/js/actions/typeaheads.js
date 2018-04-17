@@ -82,7 +82,7 @@ function fetchTypeaheads(api) {
 export function fetchTypeaheadsByAPI() {
   return (dispatch, getState) => {
     const { selectedAPIs } = getState();
-
+    
     return Promise.all(
       map(selectedAPIs, (api) => {
         if(api.typeaheads){

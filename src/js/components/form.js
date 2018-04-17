@@ -36,6 +36,7 @@ const SelectField = ({field, onChange}) => {
   return(
     <Select 
       {...field}
+      className="mi-form__select"
       options={selectOptions}
       onBlur={(option) => field.onBlur(option.value)}
       onChange={value => {
@@ -124,9 +125,7 @@ class Form extends React.Component{
         <label className="mi-form__search-label" htmlFor="q">{this.state.form_label}</label>
         <div className="mi-form__search-row">
           <SelectField field={fields.type} onChange={this.onSelectChange} />
-        </div>
 
-        <div className="mi-form__search-row">
           <Autosuggest
             suggestions={this.state.suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

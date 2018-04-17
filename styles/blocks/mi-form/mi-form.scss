@@ -88,8 +88,11 @@
     display: inline-block;
     padding-bottom: 5px;
   }
+
+  &__select {
+    width: 35%;
+    display: table-cell;
+    vertical-align: top;
+  }
 }
 
-.Select{
-  margin-right: 36px;
-}

@@ -11,7 +11,7 @@ const Root = ({ history, store }) => {
     <Provider store={ store }>
       <Router history={ history }>
         <Route component={ App }>
-          <Route path="/" component={ Search } />
+          <Route path="/" component={ Index } />
           <Route path="search(/:api)" component={ Search } />
         </Route>
       </Router>
