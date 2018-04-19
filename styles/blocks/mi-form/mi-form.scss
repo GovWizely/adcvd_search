@@ -6,8 +6,20 @@
   width: 96%;
   max-width: 640px;
 
+  &__index {
+    border-collapse: collapse;
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 450px;
+  }
+
   label {
     color: black;
+  }
+
+  &__label-index {
+    text-align: center;
+    vertical-align: middle;
   }
 
   &__search-row {
@@ -61,6 +73,27 @@
     }
   }
 
+    &__submit-index {
+    display: table-cell;
+    horizontal-align: middle;
+    vertical-align: top;
+    margin-top: 15px;
+    margin-left: 167px;
+    background-color: $blue-color;
+    border: none;
+    box-sizing: border-box;
+    color: #FFF;
+    font-size: 18px;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 16px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+     
+      @include appearance(none);
+  }
+
   &__suggestions-container {
 
     ul {
@@ -93,6 +126,13 @@
     width: 35%;
     display: table-cell;
     vertical-align: top;
+  }
+
+  &__select-index {
+    width: 60%;
+    display: table-cell;
+    vertical-align: top;
+    padding: 2px;
   }
 }
 

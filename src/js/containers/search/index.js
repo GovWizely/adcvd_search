@@ -108,7 +108,7 @@ function mapDispatchToProps(
       dispatch(updatePath());
     },
     onExpand: (query) => {
-      dispatch(replaceQuery({ q: query }));
+      dispatch(updateQuery({ q: query, type: 'world_regions'  }));
       dispatch(invalidateAllResults());
       dispatch(invalidateAllFilters());
       dispatch(fetchResultsByAPI());

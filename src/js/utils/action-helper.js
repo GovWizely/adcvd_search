@@ -42,6 +42,8 @@ export function formatParams(query) {
 
 export function formatEndpoint(endpoint, params) {
   const parsedEndpoint = Url.parse(endpoint, true);
+  if(!endpoint.includes('query_expansion'))
+    params.sort = "case_number";
   parsedEndpoint.query = assign({}, parsedEndpoint.query, params);
   parsedEndpoint.search = null;
   return Url.format(parsedEndpoint);

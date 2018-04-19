@@ -90,9 +90,8 @@ module.exports = assign(
     typeaheads: ['countries', 'products', 'case_numbers', 'hts_numbers'],
     displayName: 'ADCVD Cases',
     endpoint: endpoint('v1/adcvd_orders/search'),
-    permittedParams: ['countries', 'product_short_names', 'offset', 'hts_numbers_raw', 'case_numbers'],
+    permittedParams: ['countries', 'product_short_names', 'offset', 'hts_numbers_raw', 'case_numbers', 'world_regions'],
     transformResponse: transformAdcvdResponse,
-    transformParams: transformAdcvdParams,
-    formLabel: 'Choose a field to search by:'
+    transformParams: transformAdcvdParams
   })
 );

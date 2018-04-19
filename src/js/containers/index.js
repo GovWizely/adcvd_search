@@ -6,13 +6,17 @@ import { connect } from 'react-redux';
 import { fetchTypeaheadsByAPI, invalidateAllTypeaheads } from '../actions/typeaheads';
 import { selectAPIs } from '../actions/api';
 
-const SelectField = ({field, options}) => {
+const SelectField = ({field, options, onChange}) => {
   return(
     <Select 
       {...field}
-      className="mi-form__select"
+      className="mi-form__select-index"
       options={options}
       onBlur={(option) => field.onBlur(option.value)}
+      onChange={value => {
+        onChange(value)
+        field.onChange(value)
+      }}
     />
   )
 }
@@ -44,6 +48,31 @@ class IndexForm extends React.Component{
     }
   }
 
+  onCountriesChange = (event) => {
+    this.props.fields.product_short_names.onChange(null);
+    this.props.fields.hts_numbers.onChange(null);
+    this.props.fields.case_numbers.onChange(null);
+  }
+
+  onProductsChange = (event) => {
+    this.props.fields.countries.onChange(null);
+    this.props.fields.hts_numbers.onChange(null);
+    this.props.fields.case_numbers.onChange(null);
+  }
+
+  onCaseNumbersChange = (event) => {
+    this.props.fields.product_short_names.onChange(null);
+    this.props.fields.hts_numbers.onChange(null);
+    this.props.fields.countries.onChange(null);
+  }
+
+  onHtsNumbersChange = (event) => {
+    this.props.fields.product_short_names.onChange(null);
+    this.props.fields.countries.onChange(null);
+    this.props.fields.case_numbers.onChange(null);
+  }
+
+
   render(){
     const { fields, focused, handleSubmit } = this.props;
     const inputProps = {
@@ -55,34 +84,32 @@ class IndexForm extends React.Component{
       ...fields.q
     };
     return(
-      <form className="mi-form" onSubmit={ handleSubmit }>
-        <h3> Choose a value for one of the following fields, and press Search to begin: </h3>
+      <form className="mi-form__index" onSubmit={ handleSubmit }>
+        <h3> Choose a value for one of the fields and press Search: </h3>
         <div className="mi-form__search-row">
-          <label htmlFor="countries">Country</label>
-          <SelectField field={fields.countries} options={this.state.typeaheads.countries} />
+          <label className="mi-form__label-index" htmlFor="countries">Country</label>
+          <SelectField field={fields.countries} options={this.state.typeaheads.countries} onChange={this.onCountriesChange} />
         </div>
 
         <div className="mi-form__search-row">
-          <label htmlFor="products">Product</label>
-          <SelectField field={fields.product_short_names} options={this.state.typeaheads.products} />
+          <label className="mi-form__label-index" htmlFor="products">Product</label>
+          <SelectField field={fields.product_short_names} options={this.state.typeaheads.products} onChange={this.onProductsChange} />
         </div>
         
         <div className="mi-form__search-row">
-          <label htmlFor="case_numbers">Case Number</label>
-          <SelectField field={fields.case_numbers} options={this.state.typeaheads.case_numbers} />
+          <label className="mi-form__label-index" htmlFor="case_numbers">Case Number</label>
+          <SelectField field={fields.case_numbers} options={this.state.typeaheads.case_numbers} onChange={this.onCaseNumbersChange} />
         </div>
 
         <div className="mi-form__search-row">
-          <label htmlFor="hts_numbers">HTS Numbers</label>
-          <SelectField field={fields.hts_numbers} options={this.state.typeaheads.hts_numbers} />
+          <label className="mi-form__label-index" htmlFor="hts_numbers">HTS Numbers</label>
+          <SelectField field={fields.hts_numbers} options={this.state.typeaheads.hts_numbers} onChange={this.onHtsNumbersChange} />
         </div>
 
         <div className="mi-form__search-row">
-          <span className="mi-form__submit">
-            <button className="uk-button mi-form__submit__button" onClick={ handleSubmit } title="Search">
-              Search
-            </button>
-          </span>
+          <button className="uk-button mi-form__submit-index" onClick={ handleSubmit } title="Search">
+            Search
+          </button>
         </div>
       </form>
     );
