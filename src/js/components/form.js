@@ -10,6 +10,7 @@ const selectOptions = [
   { value: 'products', label: 'Product' },
   { value: 'case_numbers', label: 'Case Number' },
   { value: 'hts_numbers', label: 'HTS Number' },
+  { value: 'commodities', label: 'Commodity'}
 ]
 
 const fetchTypeaheads = (selectedAPIs, typeaheads_prop, type) => {

@@ -87,6 +87,11 @@ function mapDispatchToProps(dispatch) {
         query.q = query.hts_numbers;
         delete query.hts_numbers;
       }
+      if(query.commodities){
+        query.type = 'commodities';
+        query.q = query.commodities;
+        delete query.commodities;
+      }
       dispatch(replaceQuery(query));
       dispatch(invalidateAllResults());
       dispatch(invalidateAllFilters());

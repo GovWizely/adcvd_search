@@ -56,7 +56,7 @@ class ADCVDOrder extends React.Component {
 
   render() {
     const {
-      product_short_name, country, case_number, segments, url
+      product_short_name, country, case_number, segments, url, product
     } = this.props;
     const { showSegments } = this.state;
     const expanderText = showSegments ? 'Collapse' : 'Expand';
@@ -65,6 +65,7 @@ class ADCVDOrder extends React.Component {
         <header className="mi-tpp-rates__header">
           <a href={url.replace('https://beta.trade.gov', '')}>{ country + ", " + product_short_name }</a>
         </header>
+        <p>{ product }</p>
         <p>{ case_number }</p>
       </article>
     );

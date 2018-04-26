@@ -52,26 +52,36 @@ class IndexForm extends React.Component{
     this.props.fields.product_short_names.onChange(null);
     this.props.fields.hts_numbers.onChange(null);
     this.props.fields.case_numbers.onChange(null);
+    this.props.fields.commodities.onChange(null);
   }
 
   onProductsChange = (event) => {
     this.props.fields.countries.onChange(null);
     this.props.fields.hts_numbers.onChange(null);
     this.props.fields.case_numbers.onChange(null);
+    this.props.fields.commodities.onChange(null);
   }
 
   onCaseNumbersChange = (event) => {
     this.props.fields.product_short_names.onChange(null);
     this.props.fields.hts_numbers.onChange(null);
     this.props.fields.countries.onChange(null);
+    this.props.fields.commodities.onChange(null);
   }
 
   onHtsNumbersChange = (event) => {
     this.props.fields.product_short_names.onChange(null);
     this.props.fields.countries.onChange(null);
     this.props.fields.case_numbers.onChange(null);
+    this.props.fields.commodities.onChange(null);
   }
 
+  onCommoditiesChange = (event) => {
+    this.props.fields.product_short_names.onChange(null);
+    this.props.fields.countries.onChange(null);
+    this.props.fields.case_numbers.onChange(null);
+    this.props.fields.hts_numbers.onChange(null);
+  }
 
   render(){
     const { fields, focused, handleSubmit } = this.props;
@@ -107,6 +117,11 @@ class IndexForm extends React.Component{
         </div>
 
         <div className="mi-form__search-row">
+          <label className="mi-form__label-index" htmlFor="commodities">Commodity</label>
+          <SelectField field={fields.commodities} options={this.state.typeaheads.commodities} onChange={this.onCommoditiesChange} />
+        </div>
+
+        <div className="mi-form__search-row">
           <button className="uk-button mi-form__submit-index" onClick={ handleSubmit } title="Search">
             Search
           </button>
@@ -118,7 +133,7 @@ class IndexForm extends React.Component{
 
 const Index = reduxForm({
   form: 'form',
-  fields: ['countries', 'product_short_names', 'case_numbers', 'hts_numbers']
+  fields: ['countries', 'product_short_names', 'case_numbers', 'hts_numbers', 'commodities']
 }, state => ({
   initialValues: {}
 }))(IndexForm);

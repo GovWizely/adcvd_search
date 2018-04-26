@@ -87,10 +87,10 @@ module.exports = assign(
       countries: { type: 'array', displayName: 'Countries' },
       products: { type: 'array', displayName: 'Products' }
     },
-    typeaheads: ['countries', 'products', 'case_numbers', 'hts_numbers'],
+    typeaheads: ['countries', 'products', 'case_numbers', 'hts_numbers', 'commodities'],
     displayName: 'ADCVD Cases',
     endpoint: endpoint('v1/adcvd_orders/search'),
-    permittedParams: ['countries', 'product_short_names', 'offset', 'hts_numbers_raw', 'case_numbers', 'world_regions'],
+    permittedParams: ['countries', 'product_short_names', 'offset', 'hts_numbers_raw', 'case_numbers', 'world_regions', 'commodities'],
     transformResponse: transformAdcvdResponse,
     transformParams: transformAdcvdParams
   })
